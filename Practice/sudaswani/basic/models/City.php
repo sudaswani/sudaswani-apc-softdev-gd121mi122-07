@@ -12,6 +12,8 @@ use Yii;
  * @property string $city_description
  * @property string $citycol
  * @property integer $province_id
+ *
+ * @property Province $province
  */
 class City extends \yii\db\ActiveRecord
 {
@@ -48,5 +50,13 @@ class City extends \yii\db\ActiveRecord
             'citycol' => 'Citycol',
             'province_id' => 'Province ID',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProvince()
+    {
+        return $this->hasOne(Province::className(), ['id' => 'province_id']);
     }
 }
