@@ -8,6 +8,8 @@ body {
     height: auto;
     margin: 0 auto -60px;
     padding: 0 0 60px;
+	background-color: #66ffcc;
+	font-family: 'Glyphicons Halflings';
 }
 
 .wrap > .container {
