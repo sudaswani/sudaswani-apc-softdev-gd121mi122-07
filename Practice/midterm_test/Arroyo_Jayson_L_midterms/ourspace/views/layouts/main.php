@@ -21,6 +21,7 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body>
+<body style= "background-color:#4169E1"
 
 <?php $this->beginBody() ?>
     <div class="wrap">

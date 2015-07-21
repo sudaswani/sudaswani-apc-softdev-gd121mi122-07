@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Myaddress;
+use app\models\Mycomment;
 
 /**
- * MyaddressSearch represents the model behind the search form about `app\models\Myaddress`.
+ * MycommentSearch represents the model behind the search form about `app\models\Mycomment`.
  */
-class MyaddressSearch extends Myaddress
+class MycommentSearch extends Mycomment
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class MyaddressSearch extends Myaddress
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['firstname', 'middlename', 'lastname', 'gender', 'created_at', 'home_address', 'landline', 'cellphone'], 'safe'],
+            [['id', 'myaddress_id'], 'integer'],
+            [['atuhor', 'body', 'created_at'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class MyaddressSearch extends Myaddress
      */
     public function search($params)
     {
-        $query = Myaddress::find();
+        $query = Mycomment::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -57,16 +57,12 @@ class MyaddressSearch extends Myaddress
 
         $query->andFilterWhere([
             'id' => $this->id,
+            'myaddress_id' => $this->myaddress_id,
             'created_at' => $this->created_at,
         ]);
 
-        $query->andFilterWhere(['like', 'firstname', $this->firstname])
-            ->andFilterWhere(['like', 'middlename', $this->middlename])
-            ->andFilterWhere(['like', 'lastname', $this->lastname])
-            ->andFilterWhere(['like', 'gender', $this->gender])
-            ->andFilterWhere(['like', 'home_address', $this->home_address])
-            ->andFilterWhere(['like', 'landline', $this->landline])
-            ->andFilterWhere(['like', 'cellphone', $this->cellphone]);
+        $query->andFilterWhere(['like', 'atuhor', $this->atuhor])
+            ->andFilterWhere(['like', 'body', $this->body]);
 
         return $dataProvider;
     }

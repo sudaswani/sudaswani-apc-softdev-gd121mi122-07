@@ -35,7 +35,7 @@ class Myaddress extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['firstname', 'middlename', 'lastname', 'gender', 'home_address', 'landline', 'cellphone'], 'required'],
+            [['firstname', 'middlename', 'lastname', 'gender'], 'required'],
             [['created_at'], 'safe'],
             [['firstname', 'middlename', 'lastname'], 'string', 'max' => 30],
             [['gender'], 'string', 'max' => 1],
